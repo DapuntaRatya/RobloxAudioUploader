@@ -154,14 +154,12 @@ Isi file `.env` seperti berikut:
 ```env
 APP_NAME=RobloxAudioUploader
 APP_ENV=local
-APP_DEBUG=true
 APP_HOST=127.0.0.1
 APP_PORT=8000
 
 SESSION_COOKIE_NAME=rau_session
 FERNET_KEY=paste_hasil_generate_di_sini
 
-DATA_DIR=app/data
 TEMP_DIR=app/temp
 FFMPEG_LOCATION=
 ```

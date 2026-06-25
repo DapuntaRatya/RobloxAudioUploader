@@ -1,13 +1,14 @@
-from typing import Iterable, Optional
+from typing import Any, Iterable, Optional
+import asyncio
 
-import httpx
+import requests
 
 from app.config import settings
 from app.core.errors import RobloxApiError
 from app.modules.roblox.roblox_errors import roblox_http_error_message
 
 
-def response_body(response: httpx.Response):
+def response_body(response: Any):
     try:
         return response.json()
     except Exception:
@@ -19,7 +20,27 @@ class RobloxClient:
         self.api_key = api_key
 
     def headers(self) -> dict:
-        return {"x-api-key": self.api_key}
+        return {
+            "x-api-key": self.api_key,
+            "Accept": "*/*",
+            "User-Agent": "curl/8.5.0",
+        }
+
+    def _request_sync(
+        self,
+        method: str,
+        url: str,
+        *,
+        headers: dict,
+        **kwargs,
+    ) -> requests.Response:
+        return requests.request(
+            method=str(method).upper(),
+            url=url,
+            headers=headers,
+            timeout=settings.ROBLOX_REQUEST_TIMEOUT_SECONDS,
+            **kwargs,
+        )
 
     async def request(
         self,
@@ -28,20 +49,25 @@ class RobloxClient:
         *,
         expected_statuses: Optional[Iterable[int]] = None,
         **kwargs,
-    ) -> httpx.Response:
+    ) -> requests.Response:
         if expected_statuses is None:
             expected_statuses = (200, 201, 202, 204)
 
-        headers = kwargs.pop("headers", {})
-        headers = {**self.headers(), **headers}
+        extra_headers = kwargs.pop("headers", {}) or {}
+        headers = {**self.headers(), **extra_headers}
 
         try:
-            async with httpx.AsyncClient(timeout=settings.ROBLOX_REQUEST_TIMEOUT_SECONDS) as client:
-                response = await client.request(method, url, headers=headers, **kwargs)
-        except httpx.RequestError as exc:
+            response = await asyncio.to_thread(
+                self._request_sync,
+                method,
+                url,
+                headers=headers,
+                **kwargs,
+            )
+        except requests.RequestException as exc:
             raise RobloxApiError(
                 "ROBLOX_CONNECTION_ERROR",
-                f"Gagal connect ke Roblox API: {exc}",
+                f"Gagal connect ke Roblox API: {type(exc).__name__}: {exc}",
                 status_code=502,
             ) from exc
 

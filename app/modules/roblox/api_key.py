@@ -1,22 +1,32 @@
 from typing import Any, Dict, List
+import asyncio
 
-import httpx
+import requests
 
 from app.config import settings
 from app.core.errors import AuthError
 
 
+def _introspect_api_key_sync(api_key: str) -> requests.Response:
+    return requests.post(
+        settings.ROBLOX_INTROSPECT_URL,
+        json={"apiKey": api_key},
+        headers={
+            "Content-Type": "application/json",
+            "Accept": "*/*",
+            "User-Agent": "curl/8.5.0",
+        },
+        timeout=settings.ROBLOX_REQUEST_TIMEOUT_SECONDS,
+    )
+
+
 async def introspect_api_key(api_key: str) -> Dict[str, Any]:
     try:
-        async with httpx.AsyncClient(timeout=settings.ROBLOX_REQUEST_TIMEOUT_SECONDS) as client:
-            response = await client.post(
-                settings.ROBLOX_INTROSPECT_URL,
-                json={"apiKey": api_key},
-            )
-    except httpx.RequestError as exc:
+        response = await asyncio.to_thread(_introspect_api_key_sync, api_key)
+    except requests.RequestException as exc:
         raise AuthError(
             "ROBLOX_INTROSPECT_CONNECTION_ERROR",
-            f"Gagal menghubungi endpoint introspect Roblox: {exc}",
+            f"Gagal menghubungi endpoint introspect Roblox: {type(exc).__name__}: {exc}",
             status_code=502,
         ) from exc
 
@@ -25,6 +35,7 @@ async def introspect_api_key(api_key: str) -> Dict[str, Any]:
             body = response.json()
         except Exception:
             body = response.text
+
         raise AuthError(
             "INVALID_API_KEY",
             "API key tidak valid atau tidak bisa di-introspect.",
@@ -39,9 +50,11 @@ def _has_scope(scopes: List[Dict[str, Any]], scope_name: str, required_ops: List
     for scope in scopes:
         if scope.get("name") != scope_name:
             continue
+
         operations = set(scope.get("operations") or [])
         if all(op in operations for op in required_ops):
             return True
+
     return False
 
 
