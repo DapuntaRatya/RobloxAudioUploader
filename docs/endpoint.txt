@@ -1,0 +1,122 @@
+[1]
+
+POST /api/login
+
+Payload:
+{
+  "x-api-key": "..."
+}
+
+Response sukses:
+{
+  "status": "success",
+  "data": {
+    "message": "Login berhasil",
+    "session_valid": true
+  },
+  "error": null
+}
+
+Response gagal:
+{
+  "status": "failed",
+  "data": null,
+  "error": {
+    "code": "INVALID_API_KEY",
+    "message": "API key tidak valid atau permission tidak cukup."
+  }
+}
+
+[2]
+
+POST /api/logout
+
+Response:
+
+{
+  "status": "success",
+  "data": {
+    "message": "Logout berhasil"
+  },
+  "error": null
+}
+
+[3]
+
+GET /api/session
+
+Response:
+
+{
+  "status": "success",
+  "data": {
+    "authenticated": true,
+    "creator_user_id": "9897973594"
+  },
+  "error": null
+}
+
+[4]
+
+POST /api/upload
+
+Payload:
+
+{
+  "source_type": "youtube",
+  "audio_links": [
+    "https://youtube.com/watch?v=...",
+    "https://youtube.com/watch?v=..."
+  ],
+  "experience_ids": [
+    "9711918317",
+    "9713453458"
+  ],
+  "options": {
+    "parallel": true,
+    "grant_permission": true
+  }
+}
+
+Response cepat:
+
+{
+  "status": "success",
+  "data": {
+    "job_id": "job_20260625_abc123",
+    "stream_url": "/api/upload/job_20260625_abc123/events"
+  },
+  "error": null
+}
+
+[5]
+
+GET /api/upload/{job_id}/events
+
+Format event SSE:
+
+event: item_upload_done
+data: {"job_id":"job_abc","item_id":"audio_1","asset_id":"79113590726749","message":"Audio berhasil diupload"}
+
+event: permission_done
+data: {"job_id":"job_abc","item_id":"audio_1","experience_id":"9711918317","message":"Permission berhasil diberikan"}
+
+event: job_done
+data: {"job_id":"job_abc","message":"Semua proses selesai"}
+
+[0]
+
+GET  /
+GET  /login
+
+POST /api/login
+POST /api/logout
+GET  /api/session
+
+GET  /api/sources
+POST /api/upload
+GET  /api/upload/{job_id}
+GET  /api/upload/{job_id}/events
+POST /api/upload/{job_id}/cancel
+
+GET  /api/debug/jobs       optional dev only

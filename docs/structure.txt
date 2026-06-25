@@ -1,0 +1,98 @@
+RobloxAudioUploader/
+├── app/
+│   ├── __init__.py
+│   ├── main.py
+│   ├── config.py
+│   ├── dependencies.py
+│   │
+│   ├── core/
+│   │   ├── __init__.py
+│   │   ├── response.py
+│   │   ├── errors.py
+│   │   ├── security.py
+│   │   ├── temp_files.py
+│   │   └── logger.py
+│   │
+│   ├── api/
+│   │   ├── __init__.py
+│   │   ├── pages.py
+│   │   ├── auth.py
+│   │   ├── upload.py
+│   │   └── stream.py
+│   │
+│   ├── schemas/
+│   │   ├── __init__.py
+│   │   ├── auth_schema.py
+│   │   ├── upload_schema.py
+│   │   ├── event_schema.py
+│   │   └── roblox_schema.py
+│   │
+│   ├── services/
+│   │   ├── __init__.py
+│   │   ├── auth_service.py
+│   │   ├── session_service.py
+│   │   ├── job_service.py
+│   │   ├── event_bus.py
+│   │   └── upload_orchestrator.py
+│   │
+│   ├── modules/
+│   │   ├── __init__.py
+│   │   ├── roblox/
+│   │   │   ├── __init__.py
+│   │   │   ├── api_key.py
+│   │   │   ├── client.py
+│   │   │   ├── asset_upload.py
+│   │   │   ├── asset_operation.py
+│   │   │   ├── asset_permission.py
+│   │   │   └── roblox_errors.py
+│   │   │
+│   │   └── downloader/
+│   │       ├── __init__.py
+│   │       ├── base.py
+│   │       ├── registry.py
+│   │       ├── mp3_youtube.py
+│   │       ├── mp3_soundcloud.py
+│   │       └── mp3_spotify.py
+│   │
+│   ├── workers/
+│   │   ├── __init__.py
+│   │   ├── task_runner.py
+│   │   └── limits.py
+│   │
+│   ├── public/
+│   │   ├── index.html
+│   │   ├── login.html
+│   │   ├── css/
+│   │   │   ├── base.css
+│   │   │   ├── login.css
+│   │   │   └── dashboard.css
+│   │   └── js/
+│   │       ├── app.js
+│   │       ├── api.js
+│   │       ├── state.js
+│   │       ├── login.js
+│   │       ├── dashboard.js
+│   │       ├── dynamic-list.js
+│   │       ├── upload-stream.js
+│   │       └── components/
+│   │           ├── profile-menu.js
+│   │           ├── source-selector.js
+│   │           ├── audio-list.js
+│   │           ├── experience-list.js
+│   │           └── result-log.js
+│   │
+│   └── temp/
+│       └── .gitkeep
+│
+├── test/
+│   ├── code/
+│   │   ├── flow_upload.py
+│   │   └── permission_only.py
+│   └── data/
+│       └── test_music.mp3
+│
+├── .env
+├── .env.example
+├── .gitignore
+├── README.md
+└── requirements.txt

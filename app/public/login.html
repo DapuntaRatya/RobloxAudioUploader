@@ -1,0 +1,51 @@
+<!doctype html>
+<html lang="id">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>RAU - Login</title>
+  <link rel="stylesheet" href="/css/base.css?v=login_compact_1">
+  <link rel="stylesheet" href="/css/login.css?v=login_compact_1">
+</head>
+<body class="login-body">
+  <main class="login-layout">
+    <section class="login-info">
+      <div class="login-brand">◆ RAU</div>
+      <h1>Roblox Audio Uploader</h1>
+      <p>Gunakan Roblox Open Cloud API Key untuk upload audio dan grant permission ke experience.</p>
+
+      <div class="scope-card">
+        <h2>Required Scopes</h2>
+        <div class="scope-list">
+          <div><strong>asset</strong><span>read, write</span></div>
+          <div><strong>asset-permissions</strong><span>write</span></div>
+        </div>
+      </div>
+    </section>
+
+    <section class="login-card">
+      <div class="card-head">
+        <h2>Login API Key</h2>
+        <p>API key akan disimpan di server session dan dienkripsi.</p>
+      </div>
+
+      <form id="loginForm" class="login-form">
+        <label for="apiKey">API Key</label>
+        <input id="apiKey" name="apiKey" type="password" placeholder="rbx_cloud_..." autocomplete="off" required>
+
+        <button type="submit" id="loginButton" class="primary-button compact-primary">Login</button>
+
+        <p id="loginMessage" class="form-message"></p>
+      </form>
+
+      <div class="quick-links">
+        <a href="https://www.youtube.com" target="_blank" rel="noreferrer">YouTube Tutorial</a>
+        <a href="https://create.roblox.com/dashboard/credentials" target="_blank" rel="noreferrer">Open Cloud Credentials</a>
+        <!-- <a href="https://create.roblox.com/docs/cloud/open-cloud" target="_blank" rel="noreferrer">Open Cloud Docs</a> -->
+      </div>
+    </section>
+  </main>
+
+  <script type="module" src="/js/login.js?v=login_compact_1"></script>
+</body>
+</html>

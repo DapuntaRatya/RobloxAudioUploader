@@ -1,0 +1,18 @@
+services:
+  rau:
+    build:
+      context: .
+      dockerfile: deploy/Dockerfile
+    container_name: roblox_audio_uploader
+    env_file:
+      - .env
+    ports:
+      - "8000:8000"
+    volumes:
+      - rau_data:/app/data
+      - rau_temp:/app/app/temp
+    restart: unless-stopped
+
+volumes:
+  rau_data:
+  rau_temp:

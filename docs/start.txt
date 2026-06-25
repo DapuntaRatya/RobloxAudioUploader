@@ -1,0 +1,9 @@
+python -m venv .venv
+.venv\Scripts\activate
+pip install -r requirements.txt
+uvicorn app.main:app --reload
+
+py -3.10 -m pip install --user -r requirements.txt
+py -3.10 -m uvicorn app.main:app --reload
+
+http://127.0.0.1:8000

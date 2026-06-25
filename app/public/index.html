@@ -1,0 +1,158 @@
+<!doctype html>
+<html lang="id">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>RAU - Dashboard</title>
+  <link rel="stylesheet" href="/css/base.css?v=home_compact_1">
+  <link rel="stylesheet" href="/css/dashboard.css?v=home_compact_1">
+</head>
+<body class="rau-body">
+  <aside class="app-sidebar">
+    <div class="sidebar-logo">◆ RAU</div>
+
+    <nav class="sidebar-nav">
+      <a class="side-link active" href="/">Home</a>
+      <a class="side-link" href="/assets">Assets</a>
+    </nav>
+
+    <div class="side-spacer"></div>
+
+    <a class="side-link slim" href="https://roblox.com" target="_blank" rel="noreferrer">Roblox.com</a>
+    <a class="side-link slim" href="https://create.roblox.com/dashboard/creations?activeTab=Audio" target="_blank" rel="noreferrer">Creator Hub</a>
+  </aside>
+
+  <main class="app-main">
+    <header class="app-top">
+      <div class="title-block">
+        <h1>Roblox Audio Uploader</h1>
+        <p>Upload audio ke Roblox secara massal dan otomatis</p>
+      </div>
+
+      <div class="top-actions">
+        <!-- <a class="compact-link" href="/assets">View Assets</a> -->
+
+        <div class="profile" id="profileMenuRoot">
+          <button id="profileButton" class="profile-button" title="Profile">
+            <span id="profileInitial">R</span>
+          </button>
+
+          <aside id="profileSidebar" class="profile-sidebar hidden">
+            <div class="profile-panel">
+              <div class="profile-head">
+                <div class="profile-avatar" id="profileInitialLarge">R</div>
+                <div>
+                  <h3>Roblox Profile</h3>
+                  <p id="profileUserId">User ID : -</p>
+                </div>
+              </div>
+
+              <div class="profile-info">
+                <span>API Key Name</span>
+                <strong id="profileKeyName">-</strong>
+              </div>
+
+              <button id="viewApiKeyButton" class="compact-button">View API Key</button>
+              <div id="apiKeyView" class="api-key-view hidden"></div>
+
+              <!-- <button id="viewUploadedAssetsButton" class="compact-button">View Uploaded Assets</button> -->
+              <button id="logoutButton" class="danger-button compact-danger">Logout</button>
+            </div>
+          </aside>
+        </div>
+      </div>
+    </header>
+
+    <section class="compact-panel input-shell">
+      <div class="panel-title-row">
+        <div>
+          <h2>Upload Setup</h2>
+          <p>Masukkan link audio dan target experience.</p>
+        </div>
+
+        <div class="setup-actions">
+          <button id="demoFillButton" class="compact-button">Contoh</button>
+          <button id="startUploadButton" class="primary-button compact-primary">Start Upload</button>
+        </div>
+      </div>
+
+      <div class="input-grid">
+        <section class="mini-card">
+          <div class="mini-head">
+            <span>01</span>
+            <div>
+              <h3>Input Audio</h3>
+              <p>Pilih source dan masukkan banyak link.</p>
+            </div>
+          </div>
+
+          <div id="sourceSelector" class="source-selector"></div>
+          <div id="audioList"></div>
+        </section>
+
+        <section class="mini-card">
+          <div class="mini-head">
+            <span>02</span>
+            <div>
+              <h3>Input Experience</h3>
+              <p>Masukkan universe atau experience ID.</p>
+            </div>
+          </div>
+
+          <div id="experienceList"></div>
+        </section>
+      </div>
+
+      <div class="option-bar">
+        <label class="switchline">
+          <input id="parallelCheck" type="checkbox" checked>
+          <span>Parallel process</span>
+        </label>
+        <label class="switchline">
+          <input id="permissionCheck" type="checkbox" checked>
+          <span>Grant permission</span>
+        </label>
+      </div>
+    </section>
+
+    <section class="dashboard-grid">
+      <section class="compact-panel progress-card">
+        <div class="panel-title-row">
+          <div>
+            <h2>Progress Per Audio</h2>
+            <p>Progress setiap file atau link tampil terpisah.</p>
+          </div>
+        </div>
+
+        <div id="progressList" class="progress-list"></div>
+      </section>
+
+      <section class="compact-panel uploaded-card">
+        <div class="panel-title-row">
+          <div>
+            <h2>Uploaded Assets</h2>
+            <p>Asset yang sudah berhasil diupload.</p>
+          </div>
+          <button id="clearUploadedButton" class="compact-button">Clear</button>
+        </div>
+
+        <div id="uploadedAssetsList" class="asset-list"></div>
+      </section>
+    </section>
+
+    <section class="compact-panel result-card">
+      <div class="panel-title-row">
+        <div>
+          <h2>Runtime Result</h2>
+          <p>Log lengkap download, upload, moderation, dan permission.</p>
+        </div>
+        <button id="clearResultButton" class="compact-button">Clear</button>
+      </div>
+
+      <div id="resultLog" class="result-log"></div>
+    </section>
+  </main>
+
+  <script type="module" src="/js/dashboard.js?v=home_compact_1"></script>
+</body>
+</html>

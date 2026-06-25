@@ -1,0 +1,161 @@
+<!doctype html>
+<html lang="id">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>RAU - Assets</title>
+  <link rel="stylesheet" href="/css/base.css?v=assets_compact_1">
+  <link rel="stylesheet" href="/css/dashboard.css?v=assets_compact_1">
+  <link rel="stylesheet" href="/css/assets.css?v=assets_compact_1">
+</head>
+<body class="assets-body">
+  <aside class="assets-sidebar">
+    <div class="creator-logo">◆ RAU</div>
+
+    <nav class="assets-nav">
+      <a class="side-link" href="/">Home</a>
+      <a class="side-link active" href="/assets">Assets</a>
+    </nav>
+
+    <div class="side-spacer"></div>
+
+    <a class="side-link slim" href="https://roblox.com" target="_blank" rel="noreferrer">Roblox.com</a>
+    <a class="side-link slim" href="https://create.roblox.com/dashboard/creations?activeTab=Audio" target="_blank" rel="noreferrer">Creator Hub</a>
+  </aside>
+
+  <main class="assets-main">
+    <header class="assets-top">
+      <div class="assets-title-block">
+        <h1>Audio Assets</h1>
+        <p>Kelola asset audio, cek moderation, beri akses ke banyak experience</p>
+      </div>
+
+      <div class="assets-top-actions">
+        <button id="refreshAssetsButton" class="compact-button">Refresh</button>
+        <!-- <a class="compact-link" href="/">Dashboard</a> -->
+      </div>
+    </header>
+
+    <section class="assets-panel filter-panel">
+      <div class="filter-toolbar">
+        <label class="filter-field type-field">
+          <span>Type</span>
+          <select id="filterType">
+            <option value="all">All</option>
+            <option value="can_played">Can played</option>
+            <option value="archived">Archived</option>
+            <option value="blocked">Blocked</option>
+          </select>
+        </label>
+
+        <div class="filter-field">
+          <span>Time</span>
+          <div class="segmented">
+            <label><input type="radio" name="sortTime" value="descending" checked><span>Newest</span></label>
+            <label><input type="radio" name="sortTime" value="ascending"><span>Oldest</span></label>
+          </div>
+        </div>
+
+        <div class="filter-field">
+          <span>Title</span>
+          <div class="segmented">
+            <label><input type="radio" name="sortTitle" value="" checked><span>Default</span></label>
+            <label><input type="radio" name="sortTitle" value="ascending"><span>A-Z</span></label>
+            <label><input type="radio" name="sortTitle" value="descending"><span>Z-A</span></label>
+          </div>
+        </div>
+
+        <div class="filter-field">
+          <span>Length</span>
+          <div class="segmented">
+            <label><input type="radio" name="sortLength" value="" checked><span>Default</span></label>
+            <label><input type="radio" name="sortLength" value="ascending"><span>Short</span></label>
+            <label><input type="radio" name="sortLength" value="descending"><span>Long</span></label>
+          </div>
+        </div>
+
+        <div class="filter-actions">
+          <button id="selectToggleButton" class="select-toggle select-mode" type="button">Select all</button>
+          <span id="selectionCount">0 selected</span>
+        </div>
+      </div>
+
+      <div class="assets-note" id="assetsNote" style="display: none;"></div>
+
+      <div class="asset-table-wrap">
+        <table class="asset-table">
+          <colgroup>
+            <col class="col-select">
+            <col class="col-id">
+            <col class="col-title">
+            <col class="col-desc">
+            <col class="col-length">
+            <col class="col-created">
+            <col class="col-mod">
+            <col class="col-state">
+            <col class="col-store">
+            <col class="col-actions">
+          </colgroup>
+          <thead>
+            <tr>
+              <th>Select</th>
+              <th>Asset ID</th>
+              <th>Title</th>
+              <th>Description</th>
+              <th>Length</th>
+              <th>Created</th>
+              <th>Moderation</th>
+              <th>State</th>
+              <th>Store</th>
+              <th>Actions</th>
+            </tr>
+          </thead>
+          <tbody id="assetsTableBody">
+            <tr><td colspan="10">Loading assets...</td></tr>
+          </tbody>
+        </table>
+      </div>
+    </section>
+
+    <section class="assets-bottom-grid">
+      <section class="assets-panel grant-panel">
+        <div class="panel-title-row">
+          <div>
+            <h2>Grant Access</h2>
+            <p>Masukkan banyak experience atau universe ID.</p>
+          </div>
+        </div>
+
+        <div class="grant-grid">
+          <label class="grant-input-wrap">
+            <span>Experience / Universe IDs</span>
+            <textarea id="grantExperienceInput" rows="4" placeholder="9711918317&#10;9713453458"></textarea>
+          </label>
+
+          <div class="grant-summary">
+            <div><strong id="grantAssetCount">0</strong><span>assets</span></div>
+            <div><strong id="grantExperienceCount">0</strong><span>experiences</span></div>
+            <button id="grantButton" class="primary-button compact-primary">Grant Selected</button>
+          </div>
+        </div>
+      </section>
+
+      <section class="assets-panel result-panel">
+        <div class="panel-title-row">
+          <div>
+            <h2>Grant Result</h2>
+            <p>Hasil berhasil atau gagal grant access.</p>
+          </div>
+          <button id="clearGrantResultButton" class="compact-button">Clear</button>
+        </div>
+
+        <div id="grantResultList" class="grant-result-list">
+          <div class="assets-empty">Belum ada proses grant.</div>
+        </div>
+      </section>
+    </section>
+  </main>
+
+  <script type="module" src="/js/assets.js?v=assets_compact_1"></script>
+</body>
+</html>
