@@ -87,3 +87,26 @@ input:focus, textarea:focus {
     radial-gradient(circle at 78% 0%, rgba(124, 92, 255, 0.30), transparent 32rem),
     linear-gradient(135deg, #060817 0%, #0c1024 48%, #11091d 100%);
 }
+
+/* PATCH_NO_BODY_X_LOCK_BASE_START */
+html {
+  width: 100%;
+  max-width: 100%;
+  overflow-x: hidden !important;
+  overscroll-behavior-x: none;
+}
+
+body {
+  width: 100%;
+  max-width: 100vw;
+  overflow-x: hidden !important;
+  overflow-x: clip !important;
+  overscroll-behavior-x: none;
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+/* PATCH_NO_BODY_X_LOCK_BASE_END */

@@ -794,3 +794,81 @@ textarea {
     width: 100%;
   }
 }
+
+/* PATCH_NO_BODY_X_LOCK_DASHBOARD_START */
+body.rau-body {
+  width: 100%;
+  max-width: 100vw;
+  overflow-x: hidden !important;
+  overflow-x: clip !important;
+}
+
+.app-sidebar {
+  max-width: 100vw;
+}
+
+.app-main {
+  box-sizing: border-box;
+  width: calc(100vw - 210px);
+  max-width: calc(100vw - 210px);
+  min-width: 0;
+  overflow-x: hidden !important;
+  overflow-x: clip !important;
+}
+
+.app-top,
+.title-block,
+.top-actions,
+.compact-panel,
+.input-shell,
+.input-grid,
+.dashboard-grid,
+.mini-card,
+.progress-card,
+.uploaded-card,
+.result-card,
+.panel-title-row,
+.setup-actions,
+.dynamic-list,
+.bulk-box,
+.list-input-row,
+.list-item {
+  min-width: 0;
+  max-width: 100%;
+}
+
+.progress-list,
+.asset-list,
+.result-log,
+.item-list {
+  max-width: 100%;
+  overflow-x: auto !important;
+  overscroll-behavior-x: contain;
+  -webkit-overflow-scrolling: touch;
+}
+
+.item-text,
+.progress-title,
+.asset-title,
+.result-data {
+  min-width: 0;
+  max-width: 100%;
+}
+
+@media (max-width: 920px) {
+  .app-sidebar {
+    width: 100vw;
+    max-width: 100vw;
+    overflow-x: auto !important;
+    overscroll-behavior-x: contain;
+  }
+
+  .app-main {
+    margin-left: 0 !important;
+    width: 100vw !important;
+    max-width: 100vw !important;
+    overflow-x: hidden !important;
+    overflow-x: clip !important;
+  }
+}
+/* PATCH_NO_BODY_X_LOCK_DASHBOARD_END */

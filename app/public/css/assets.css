@@ -715,3 +715,110 @@ body.assets-body {
     grid-template-columns: 1fr;
   }
 }
+
+/* PATCH_NO_BODY_X_LOCK_ASSETS_START */
+body.assets-body {
+  width: 100%;
+  max-width: 100vw;
+  overflow-x: hidden !important;
+  overflow-x: clip !important;
+  overscroll-behavior-x: none;
+}
+
+.assets-sidebar {
+  max-width: 100vw;
+}
+
+.assets-main {
+  box-sizing: border-box;
+  width: calc(100vw - 210px);
+  max-width: calc(100vw - 210px);
+  min-width: 0;
+  overflow-x: hidden !important;
+  overflow-x: clip !important;
+}
+
+.assets-top,
+.assets-title-block,
+.assets-top-actions,
+.assets-panel,
+.filter-panel,
+.assets-bottom-grid,
+.grant-panel,
+.result-panel,
+.grant-grid,
+.grant-input-wrap,
+.grant-summary,
+.panel-title-row {
+  min-width: 0;
+  max-width: 100%;
+}
+
+.filter-toolbar {
+  min-width: 0;
+  max-width: 100%;
+  overflow-x: auto !important;
+  overscroll-behavior-x: contain;
+  -webkit-overflow-scrolling: touch;
+}
+
+.asset-table-wrap {
+  display: block;
+  width: 100%;
+  max-width: 100%;
+  min-width: 0;
+  overflow-x: auto !important;
+  overflow-y: auto;
+  overscroll-behavior-x: contain;
+  -webkit-overflow-scrolling: touch;
+}
+
+.asset-table {
+  max-width: none;
+}
+
+.grant-input-wrap textarea,
+.grant-result-list,
+.assets-empty,
+.grant-result-item {
+  min-width: 0;
+  max-width: 100%;
+}
+
+.asset-id-cell,
+.asset-title-link,
+.asset-desc-cell,
+.asset-created-cell,
+.status-badge,
+.store-badge {
+  min-width: 0;
+}
+
+@media (max-width: 1120px) {
+  body.assets-body {
+    width: 100%;
+    max-width: 100vw;
+    overflow-x: hidden !important;
+    overflow-x: clip !important;
+  }
+
+  .assets-sidebar {
+    width: 100vw;
+    max-width: 100vw;
+    overflow-x: auto !important;
+    overscroll-behavior-x: contain;
+  }
+
+  .assets-main {
+    margin-left: 0 !important;
+    width: 100vw !important;
+    max-width: 100vw !important;
+    overflow-x: hidden !important;
+    overflow-x: clip !important;
+  }
+
+  .filter-toolbar {
+    overflow-x: visible !important;
+  }
+}
+/* PATCH_NO_BODY_X_LOCK_ASSETS_END */

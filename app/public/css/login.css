@@ -241,3 +241,27 @@ body.login-body {
     display: grid;
   }
 }
+
+/* PATCH_NO_BODY_X_LOCK_LOGIN_START */
+body.login-body {
+  width: 100%;
+  max-width: 100vw;
+  overflow-x: hidden !important;
+  overflow-x: clip !important;
+}
+
+.login-layout,
+.login-info,
+.login-card,
+.login-form,
+.quick-links,
+.scope-card,
+.scope-list {
+  min-width: 0;
+  max-width: 100%;
+}
+
+.login-form input {
+  min-width: 0;
+}
+/* PATCH_NO_BODY_X_LOCK_LOGIN_END */
